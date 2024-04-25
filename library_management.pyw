@@ -30,7 +30,17 @@ from customtkinter import *
 
 import pywinstyles
 root=CTk()
-pywinstyles.apply_style(root,"aero")
+pywinstyles.change_header_color(root,"blue")
+pywinstyles.apply_style(root,"acrylic")
+
+root.title("Library Management System")
+root.geometry("500x400")
+
+side_bar=CTkFrame(root,fg_color="blue",width=300,corner_radius=0)
+side_bar.pack(padx=0,pady=0,side=LEFT,fill="y")
+
+page=CTkFrame(root,fg_color="white",width=1600,corner_radius=0)
+page.pack(side=LEFT,padx=0,pady=0,fill="both")
 
 
 root.mainloop()
