@@ -24,4 +24,14 @@ class Book:
         self.copies_available+=1
         pass
     
+
+from tkinter import *
+from customtkinter import *
+
+import pywinstyles
+root=CTk()
+pywinstyles.apply_style(root,"aero")
+
+
+root.mainloop()
     
