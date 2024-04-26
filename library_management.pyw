@@ -27,21 +27,107 @@ class Book:
 
 from tkinter import *
 from customtkinter import *
-
+from PIL import Image
 import pywinstyles
 root=CTk()
-pywinstyles.change_header_color(root,"blue")
-pywinstyles.apply_style(root,"acrylic")
+pywinstyles.change_header_color(root,"#0D99FF")
+# pywinstyles.apply_style(root,"acrylic")
 
 root.title("Library Management System")
 root.geometry("500x400")
 
-side_bar=CTkFrame(root,fg_color="blue",width=300,corner_radius=0)
-side_bar.pack(padx=0,pady=0,side=LEFT,fill="y")
+set_appearance_mode("light")
 
-page=CTkFrame(root,fg_color="white",width=1600,corner_radius=0)
-page.pack(side=LEFT,padx=0,pady=0,fill="both")
+navbar=CTkFrame(root,fg_color="#0D99FF",height=100,corner_radius=0)
+navbar.pack(side=TOP,padx=0,pady=0,fill="x")
 
+navbar_center=CTkFrame(navbar,fg_color="transparent")
+navbar_center.pack()
+
+class Navbar:
+    def __init__(self,img,img2) -> None:
+        self.button=CTkButton(navbar_center,text="",image=img2,width=30,fg_color="transparent")
+        self.button.pack(side=LEFT,padx=5,pady=5)
+
+        self.selected=img
+        self.unselected=img2
+
+    def click(self):
+        self.button.configure(image=self.selected)
+        self.frame=CTkFrame(root,fg_color="transparent")
+        self.frame.pack()
+
+
+home_icon1=CTkImage(Image.open(r"icons\home selected.png"),size=(30,30))    
+home_icon2=CTkImage(Image.open(r"icons\home unselected.png"),size=(30,30))    
+
+home=Navbar(home_icon1,home_icon2)
+
+def delete_all_frames():
+    try:
+        home.frame.destroy()
+    except:
+        pass
+    try:
+        add.frame.destroy()
+    except:
+        pass
+    try:
+        history.frame.destroy()
+    except:
+        pass
+    try:
+        search.frame.destroy()
+    except:
+        pass
+
+def unselect_all():
+    add.button.configure(image=add.unselected)
+    home.button.configure(image=home.unselected)
+    history.button.configure(image=history.unselected)
+    search.button.configure(image=search.unselected)
+
+
+def home_page():
+    delete_all_frames()
+    unselect_all()
+    home.click()
+    # add.button.configure(image=add.unselected)
+home.button.configure(command=home_page)
+
+add_icon1=CTkImage(Image.open(r"icons\add selected.png"),size=(30,30))    
+add_icon2=CTkImage(Image.open(r"icons\add unselected.png"),size=(30,30))    
+
+add=Navbar(add_icon1,add_icon2)
+def add_page():
+    delete_all_frames()
+    unselect_all()
+    add.click()
+    # home.button.configure(image=home.unselected)
+add.button.configure(command=add_page)
+
+
+history_icon1=CTkImage(Image.open(r"icons\history selected.png"),size=(30,30))    
+history_icon2=CTkImage(Image.open(r"icons\history unselected.png"),size=(30,30)) 
+
+history=Navbar(history_icon1,history_icon2)
+def history_page():
+    delete_all_frames()
+    unselect_all()
+    history.click()
+    # home.button.configure(image=home.unselected)
+history.button.configure(command=history_page)
+
+search_icon1=CTkImage(Image.open(r"icons\search selected.png"),size=(30,30))    
+search_icon2=CTkImage(Image.open(r"icons\search unselected.png"),size=(30,30)) 
+
+search=Navbar(search_icon1,search_icon2)
+def search_page():
+    delete_all_frames()
+    unselect_all()
+    search.click()
+    # home.button.configure(image=home.unselected)
+search.button.configure(command=search_page)
 
 root.mainloop()
     
