@@ -45,15 +45,15 @@ navbar_center=CTkFrame(navbar,fg_color="transparent")
 navbar_center.pack()
 
 class Navbar:
-    def __init__(self,img,img2) -> None:
-        self.button=CTkButton(navbar_center,text="",image=img2,width=30,fg_color="transparent")
-        self.button.pack(side=LEFT,padx=5,pady=5)
+    def __init__(self,img,img2,name="") -> None:
+        self.button=CTkButton(navbar_center,text=name,image=img2,width=30,fg_color="transparent",text_color="#05395E")
+        self.button.pack(side=LEFT,padx=10,pady=5)
 
         self.selected=img
         self.unselected=img2
 
     def click(self):
-        self.button.configure(image=self.selected)
+        self.button.configure(image=self.selected,text_color="white")
         self.frame=CTkFrame(root,fg_color="transparent")
         self.frame.pack()
 
@@ -61,7 +61,7 @@ class Navbar:
 home_icon1=CTkImage(Image.open(r"icons\home selected.png"),size=(30,30))    
 home_icon2=CTkImage(Image.open(r"icons\home unselected.png"),size=(30,30))    
 
-home=Navbar(home_icon1,home_icon2)
+home=Navbar(home_icon1,home_icon2,"Home")
 
 def delete_all_frames():
     try:
@@ -82,10 +82,10 @@ def delete_all_frames():
         pass
 
 def unselect_all():
-    add.button.configure(image=add.unselected)
-    home.button.configure(image=home.unselected)
-    history.button.configure(image=history.unselected)
-    search.button.configure(image=search.unselected)
+    add.button.configure(image=add.unselected,text_color="#05395E")
+    home.button.configure(image=home.unselected,text_color="#05395E")
+    history.button.configure(image=history.unselected,text_color="#05395E")
+    search.button.configure(image=search.unselected,text_color="#05395E")
 
 
 def home_page():
@@ -98,7 +98,7 @@ home.button.configure(command=home_page)
 add_icon1=CTkImage(Image.open(r"icons\add selected.png"),size=(30,30))    
 add_icon2=CTkImage(Image.open(r"icons\add unselected.png"),size=(30,30))    
 
-add=Navbar(add_icon1,add_icon2)
+add=Navbar(add_icon1,add_icon2,"Add Book")
 def add_page():
     delete_all_frames()
     unselect_all()
@@ -110,7 +110,7 @@ add.button.configure(command=add_page)
 history_icon1=CTkImage(Image.open(r"icons\history selected.png"),size=(30,30))    
 history_icon2=CTkImage(Image.open(r"icons\history unselected.png"),size=(30,30)) 
 
-history=Navbar(history_icon1,history_icon2)
+history=Navbar(history_icon1,history_icon2,"History")
 def history_page():
     delete_all_frames()
     unselect_all()
@@ -121,7 +121,7 @@ history.button.configure(command=history_page)
 search_icon1=CTkImage(Image.open(r"icons\search selected.png"),size=(30,30))    
 search_icon2=CTkImage(Image.open(r"icons\search unselected.png"),size=(30,30)) 
 
-search=Navbar(search_icon1,search_icon2)
+search=Navbar(search_icon1,search_icon2,"Search")
 def search_page():
     delete_all_frames()
     unselect_all()
