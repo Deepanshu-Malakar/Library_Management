@@ -103,6 +103,15 @@ def add_page():
     delete_all_frames()
     unselect_all()
     add.click()
+    book_frame=CTkFrame(add.frame)
+    book_frame.grid(row=0,column=0,padx=5,pady=5,rowspan=4)
+
+    title=CTkEntry(add.frame,placeholder_text="Book Title",text_color="#05395E",border_color="#05395E")
+    title.grid(row=0,column=1,padx=5,pady=5)
+    author=CTkEntry(add.frame,placeholder_text="Book Author",text_color="#05395E",border_color="#05395E")
+    author.grid(row=1,column=1,padx=5,pady=5)
+    year=CTkEntry(add.frame,placeholder_text="Publication Year",text_color="#05395E",border_color="#05395E")
+    year.grid(row=2,column=1,padx=5,pady=5)
     # home.button.configure(image=home.unselected)
 add.button.configure(command=add_page)
 
