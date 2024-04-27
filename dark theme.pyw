@@ -30,15 +30,15 @@ from customtkinter import *
 from PIL import Image
 import pywinstyles
 root=CTk()
-pywinstyles.change_header_color(root,"#0D99FF")
+# pywinstyles.change_header_color(root,"#0D99FF")
 # pywinstyles.apply_style(root,"acrylic")
 
 root.title("Library Management System")
 root.geometry("500x400")
 
-set_appearance_mode("light")
+set_appearance_mode("dark")
 
-navbar=CTkFrame(root,fg_color="#0D99FF",height=100,corner_radius=0)
+navbar=CTkFrame(root,height=100,corner_radius=0)
 navbar.pack(side=TOP,padx=0,pady=0,fill="x")
 
 navbar_center=CTkFrame(navbar,fg_color="transparent")
@@ -46,7 +46,7 @@ navbar_center.pack()
 
 class Navbar:
     def __init__(self,img,img2,name="") -> None:
-        self.button=CTkButton(navbar_center,text=name,image=img2,width=30,fg_color="transparent",text_color="#05395E",hover=False)
+        self.button=CTkButton(navbar_center,text=name,image=img2,width=30,fg_color="transparent",text_color="#B3B3B3")
         self.button.pack(side=LEFT,padx=10,pady=5)
 
         self.selected=img
@@ -59,7 +59,7 @@ class Navbar:
 
 
 home_icon1=CTkImage(Image.open(r"icons\home selected.png"),size=(30,30))    
-home_icon2=CTkImage(Image.open(r"icons\home unselected.png"),size=(30,30))    
+home_icon2=CTkImage(Image.open(r"icons\home unselected2.png"),size=(30,30))    
 
 home=Navbar(home_icon1,home_icon2,"Home")
 
@@ -82,10 +82,10 @@ def delete_all_frames():
         pass
 
 def unselect_all():
-    add.button.configure(image=add.unselected,text_color="#05395E")
-    home.button.configure(image=home.unselected,text_color="#05395E")
-    history.button.configure(image=history.unselected,text_color="#05395E")
-    search.button.configure(image=search.unselected,text_color="#05395E")
+    add.button.configure(image=add.unselected,text_color="#B3B3B3")
+    home.button.configure(image=home.unselected,text_color="#B3B3B3")
+    history.button.configure(image=history.unselected,text_color="#B3B3B3")
+    search.button.configure(image=search.unselected,text_color="#B3B3B3")
 
 
 def home_page():
@@ -96,7 +96,7 @@ def home_page():
 home.button.configure(command=home_page)
 
 add_icon1=CTkImage(Image.open(r"icons\add selected.png"),size=(30,30))    
-add_icon2=CTkImage(Image.open(r"icons\add unselected.png"),size=(30,30))    
+add_icon2=CTkImage(Image.open(r"icons\add unselected2.png"),size=(30,30))    
 
 add=Navbar(add_icon1,add_icon2,"Add Book")
 def add_page():
@@ -108,7 +108,7 @@ add.button.configure(command=add_page)
 
 
 history_icon1=CTkImage(Image.open(r"icons\history selected.png"),size=(30,30))    
-history_icon2=CTkImage(Image.open(r"icons\history unselected.png"),size=(30,30)) 
+history_icon2=CTkImage(Image.open(r"icons\history unselected2.png"),size=(30,30)) 
 
 history=Navbar(history_icon1,history_icon2,"History")
 def history_page():
@@ -119,7 +119,7 @@ def history_page():
 history.button.configure(command=history_page)
 
 search_icon1=CTkImage(Image.open(r"icons\search selected.png"),size=(30,30))    
-search_icon2=CTkImage(Image.open(r"icons\search unselected.png"),size=(30,30)) 
+search_icon2=CTkImage(Image.open(r"icons\search unselected2.png"),size=(30,30)) 
 
 search=Navbar(search_icon1,search_icon2,"Search")
 def search_page():
