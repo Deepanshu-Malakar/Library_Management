@@ -31,16 +31,22 @@ from customtkinter import *
 from PIL import Image
 import pywinstyles
 root=CTk()
+root.resizable(False,False)
 pywinstyles.change_header_color(root,"#0D99FF")
 # pywinstyles.apply_style(root,"acrylic")
 
 root.title("Library Management System")
-root.geometry("500x400")
+root.geometry("1000x600")
 
-set_appearance_mode("light")
+
+lib=CTkImage(Image.open("images\library9.jpg"),size=(1000,600))  #1000,600
+l=CTkLabel(root,text="",image=lib)
+l.place(x=0,y=0)
+set_appearance_mode("dark")
 navbar_color="#0D99FF"
 navbar=CTkFrame(root,fg_color="#0D99FF",height=100,corner_radius=0)
 navbar.pack(side=TOP,padx=0,pady=0,fill="x")
+pywinstyles.set_opacity(navbar,0.9)
 
 navbar_center=CTkFrame(navbar,fg_color="transparent")
 navbar_center.pack()
@@ -56,7 +62,8 @@ class Navbar:
     def click(self):
         self.button.configure(image=self.selected,text_color="white")
         self.frame=CTkFrame(root,fg_color="transparent")
-        self.frame.pack()
+        pywinstyles.set_opacity(self.frame,0.9)
+        self.frame.pack(padx=10,pady=5)
 
 
 home_icon1=CTkImage(Image.open(r"icons\home selected.png"),size=(30,30))    
@@ -107,9 +114,10 @@ def add_page():
     book_frame=CTkFrame(add.frame)
     book_frame.grid(row=0,column=0,padx=5,pady=5,rowspan=4)
 
-    book_img=CTkImage(Image.open("images\cover page.png"),size=(80*10/8,120*10/8))
+    book_img=CTkImage(Image.open("images\cover page.png"),size=(80*1.7,120*1.7))
     book_label=CTkLabel(book_frame,text="",image=book_img)
     book_label.pack(padx=5,pady=5)
+    pywinstyles.set_opacity(book_frame,0.9)
 
     def change_cover_page():
         pass
@@ -117,12 +125,17 @@ def add_page():
     cover_btn.pack(padx=5,pady=5)
 
 
-    title=CTkEntry(add.frame,placeholder_text="Book Title",text_color="#05395E",border_color="#05395E")
+    title=CTkEntry(add.frame,placeholder_text="Book Title",text_color="white",border_color="white",border_width=1)
     title.grid(row=0,column=1,padx=5,pady=5)
-    author=CTkEntry(add.frame,placeholder_text="Book Author",text_color="#05395E",border_color="#05395E")
+    author=CTkEntry(add.frame,placeholder_text="Book Author",text_color="white",border_color="white",border_width=1)
     author.grid(row=1,column=1,padx=5,pady=5)
-    year=CTkEntry(add.frame,placeholder_text="Publication Year",text_color="#05395E",border_color="#05395E")
+    year=CTkEntry(add.frame,placeholder_text="Publication Year",text_color="white",border_color="white",border_width=1)
     year.grid(row=2,column=1,padx=5,pady=5)
+
+    def Attach_pdf():
+        pass
+    attach_pdf=CTkButton(add.frame,text="Attach PDF",command=Attach_pdf,fg_color=navbar_color,text_color="white")
+    attach_pdf.grid(row=3,column=1,padx=5,pady=5)
     # home.button.configure(image=home.unselected)
 add.button.configure(command=add_page)
 
