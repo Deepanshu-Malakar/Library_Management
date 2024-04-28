@@ -26,6 +26,7 @@ class Book:
     
 
 from tkinter import *
+from tkinter.filedialog import askopenfilename
 from customtkinter import *
 from PIL import Image
 import pywinstyles
@@ -37,7 +38,7 @@ root.title("Library Management System")
 root.geometry("500x400")
 
 set_appearance_mode("light")
-
+navbar_color="#0D99FF"
 navbar=CTkFrame(root,fg_color="#0D99FF",height=100,corner_radius=0)
 navbar.pack(side=TOP,padx=0,pady=0,fill="x")
 
@@ -105,6 +106,16 @@ def add_page():
     add.click()
     book_frame=CTkFrame(add.frame)
     book_frame.grid(row=0,column=0,padx=5,pady=5,rowspan=4)
+
+    book_img=CTkImage(Image.open("images\cover page.png"),size=(80*10/8,120*10/8))
+    book_label=CTkLabel(book_frame,text="",image=book_img)
+    book_label.pack(padx=5,pady=5)
+
+    def change_cover_page():
+        pass
+    cover_btn=CTkButton(book_frame,text="Change Book Cover",fg_color=navbar_color,text_color="white",hover_color="#05395E",command=change_cover_page)
+    cover_btn.pack(padx=5,pady=5)
+
 
     title=CTkEntry(add.frame,placeholder_text="Book Title",text_color="#05395E",border_color="#05395E")
     title.grid(row=0,column=1,padx=5,pady=5)
