@@ -33,20 +33,20 @@ import pywinstyles
 root=CTk()
 root.resizable(False,False)
 pywinstyles.change_header_color(root,"#0D99FF")
-# pywinstyles.apply_style(root,"acrylic")
+# pywinstyles.apply_style(root,"aero")
 
 root.title("Library Management System")
-root.geometry("1000x600")
+root.geometry("1300x780")
 
 
-lib=CTkImage(Image.open("images\library9.jpg"),size=(1000,600))  #1000,600
+lib=CTkImage(Image.open("images\library9.jpg"),size=(1300,780))  #1000,600
 l=CTkLabel(root,text="",image=lib)
 l.place(x=0,y=0)
 set_appearance_mode("dark")
 navbar_color="#0D99FF"
 navbar=CTkFrame(root,fg_color="#0D99FF",height=100,corner_radius=0)
 navbar.pack(side=TOP,padx=0,pady=0,fill="x")
-pywinstyles.set_opacity(navbar,0.9)
+pywinstyles.set_opacity(navbar,0.8)
 
 navbar_center=CTkFrame(navbar,fg_color="transparent")
 navbar_center.pack()
